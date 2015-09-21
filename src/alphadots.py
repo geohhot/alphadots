@@ -3,10 +3,10 @@ from optparse import OptionParser
 from PIL import Image, ImageDraw
 import sys
 
-def is_while (pix):
-    if pix[0] == 0 and pix[1] == 0 and pix[2] == 0:
-        return True
-    return False
+def is_while (pix, threshold=80):
+    if pix[0] >= threshold and pix[1] >= threshold and pix[2] >= threshold:
+        return False
+    return True
 
 if __name__ == "__main__":
     print ("Alaphadots!")
