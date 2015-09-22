@@ -60,6 +60,7 @@ def draw_offsets (width = 40, offset=10, color=(120,120,120)):
 def draw_text (alphabet="0123456789", color=(0,0,0),
                font="", fontsize=43, unit=0,
                offset=10, width=40):
+    alphabet = unicode (alphabet)
     k = gimp.image_list ()[0]
     bg = None
     for l in k.layers:
@@ -71,6 +72,7 @@ def draw_text (alphabet="0123456789", color=(0,0,0),
     letter_num = 0
     for l in alphabet:
         tl = pdb.gimp_text_layer_new (k, l, font, fontsize, unit)
+        #pdb.gimp_item_set_name (tl, str (ord (l)))
         #tl.parent = layer_group
         k.add_layer (tl)
         pdb.gimp_text_layer_set_color (tl, color)
@@ -81,4 +83,8 @@ def draw_text (alphabet="0123456789", color=(0,0,0),
         pdb.gimp_text_layer_set_hinting(tl, False, False)
         pdb.gimp_layer_set_offsets (tl, (offset + width) * letter_num, 0)
         letter_num += 1
+
+
+
+#draw_text (alphabet="ԱԲԳԴԵԶԷԸԹԺԻԼԽԾԿՀՁՂՃՄՅՆՇՈՉՊՋՌՍՎՏՐՑՒՓՔևՕՖ", font = "Arial LatArm", fontsize=16, offset=4, width=16)
 
